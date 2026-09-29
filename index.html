@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Oraciones Scout | Colegio Ecológico Scout</title>
+
+
+    <style>
+
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #07140d;
+
+            color: white;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =====================================================
+           FONDO DE ESTRELLAS
+        ===================================================== */
+
+        .estrellas {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255,255,255,0.8) 1px,
+                    transparent 2px
+                ),
+
+                radial-gradient(
+                    circle at 70% 30%,
+                    rgba(255,255,255,0.7) 1px,
+                    transparent 2px
+                ),
+
+                radial-gradient(
+                    circle at 40% 80%,
+                    rgba(255,255,255,0.7) 1px,
+                    transparent 2px
+                );
+
+            background-size:
+                180px 180px,
+                230px 230px,
+                300px 300px;
+
+            animation:
+                estrellas 10s linear infinite;
+
+        }
+
+
+        @keyframes estrellas {
+
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-100px);
+            }
+
+        }
+
+
+
+        /* =====================================================
+           MENÚ
+        ===================================================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 75px;
+
+            background:
+                rgba(4, 18, 10, 0.95);
+
+            backdrop-filter:
+                blur(12px);
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            padding:
+                0 6%;
+
+            z-index: 1000;
+
+            border-bottom:
+                1px solid
+                rgba(244,197,66,0.3);
+
+        }
+
+
+        /* LOGO PEQUEÑO DEL MENÚ */
+
+        .logo-menu {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            color: #f4c542;
+
+            font-weight: bold;
+
+            font-size: 17px;
+
+        }
+
+
+        .logo-menu img {
+
+            width: 50px;
+
+            height: 50px;
+
+            object-fit: contain;
+
+        }
+
+
+        nav ul {
+
+            display: flex;
+
+            gap: 30px;
+
+            list-style: none;
+
+        }
+
+
+        nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+
+        }
+
+
+        nav a:hover {
+
+            color: #f4c542;
+
+        }
+
+
+
+        /* =====================================================
+           PORTADA
+        ===================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            padding:
+                120px 20px 70px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(27,85,48,0.65),
+                    rgba(5,20,12,0.97) 70%
+                );
+
+        }
+
+
+        /* LOGO GRANDE */
+
+        .logo-principal {
+
+            width: 270px;
+
+            height: 270px;
+
+            object-fit: contain;
+
+            display: block;
+
+            margin-bottom: 30px;
+
+            filter:
+
+                drop-shadow(
+                    0 0 25px
+                    rgba(80,190,255,0.35)
+                );
+
+            animation:
+                flotar 3s ease-in-out infinite;
+
+        }
+
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-12px);
+
+            }
+
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(
+                    45px,
+                    8vw,
+                    85px
+                );
+
+            line-height: 1;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .hero h1 span {
+
+            color: #f4c542;
+
+        }
+
+
+        .hero p {
+
+            max-width: 750px;
+
+            font-size: 20px;
+
+            color: #cbd8ce;
+
+            line-height: 1.7;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        /* =====================================================
+           BOTONES
+        ===================================================== */
+
+        .boton {
+
+            display: inline-block;
+
+            padding:
+                15px 32px;
+
+            border-radius: 30px;
+
+            background: #f4c542;
+
+            color: #17251d;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            border: none;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .boton:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.05);
+
+            box-shadow:
+                0 10px 30px
+                rgba(244,197,66,0.35);
+
+        }
+
+
+
+        /* =====================================================
+           SECCIONES
+        ===================================================== */
+
+        section {
+
+            padding:
+                100px 7%;
+
+            position: relative;
+
+        }
+
+
+        .titulo {
+
+            text-align: center;
+
+            max-width: 800px;
+
+            margin:
+                0 auto 60px;
+
+        }
+
+
+        .titulo h2 {
+
+            font-size: 42px;
+
+            color: #f4c542;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .titulo p {
+
+            color: #aebeb4;
+
+            font-size: 17px;
+
+        }
+
+
+
+        /* =====================================================
+           TARJETAS
+        ===================================================== */
+
+        .grupos {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 25px;
+
+        }
+
+
+        .tarjeta {
+
+            position: relative;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(25,51,35,0.96),
+                    rgba(10,27,17,0.96)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 24px;
+
+            padding:
+                35px 25px;
+
+            text-align: center;
+
+            transition: 0.4s;
+
+            overflow: hidden;
+
+        }
+
+
+        .tarjeta::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: -100%;
+
+            width: 100%;
+
+            height: 3px;
+
+            background: #f4c542;
+
+            transition: 0.4s;
+
+        }
+
+
+        .tarjeta:hover::before {
+
+            left: 0;
+
+        }
+
+
+        .tarjeta:hover {
+
+            transform:
+                translateY(-10px);
+
+            border-color:
+                rgba(244,197,66,0.55);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,0.4);
+
+        }
+
+
+        .icono {
+
+            font-size: 60px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .tarjeta h3 {
+
+            font-size: 27px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .tarjeta p {
+
+            color: #aebeb4;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .tarjeta button {
+
+            padding:
+                12px 22px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: #f4c542;
+
+            color: #182018;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .tarjeta button:hover {
+
+            transform:
+                scale(1.06);
+
+        }
+
+
+
+        /* =====================================================
+           SCOUTERS
+        ===================================================== */
+
+        .scouter {
+
+            border:
+                1px solid
+                rgba(244,197,66,0.8);
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(62,75,40,0.98),
+                    rgba(20,34,22,0.98)
+                );
+
+        }
+
+
+        .scouter:hover {
+
+            box-shadow:
+
+                0 0 40px
+                rgba(244,197,66,0.25);
+
+        }
+
+
+
+        /* =====================================================
+           ORACIONES
+        ===================================================== */
+
+        .oracion {
+
+            display: none;
+
+            max-width: 850px;
+
+            margin:
+                50px auto 0;
+
+            padding:
+                45px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(27,55,37,0.99),
+                    rgba(8,25,15,0.99)
+                );
+
+            border-radius: 25px;
+
+            border:
+                1px solid
+                rgba(244,197,66,0.4);
+
+            text-align: center;
+
+            animation:
+                aparecer 0.6s ease;
+
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(25px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        .oracion h3 {
+
+            color: #f4c542;
+
+            font-size: 32px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .oracion p {
+
+            font-size: 19px;
+
+            line-height: 2;
+
+            color: #edf4ef;
+
+            white-space: pre-line;
+
+        }
+
+
+        .cerrar {
+
+            margin-top: 30px;
+
+            padding:
+                10px 25px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: #233d2c;
+
+            color: white;
+
+            cursor: pointer;
+
+        }
+
+
+        .cerrar:hover {
+
+            background: #31563e;
+
+        }
+
+
+
+        /* =====================================================
+           FRASE FINAL
+        ===================================================== */
+
+        .frase {
+
+            padding:
+                120px 20px;
+
+            text-align: center;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(37,76,49,0.7),
+                    rgba(5,20,12,1)
+                );
+
+        }
+
+
+        .fogata {
+
+            font-size: 75px;
+
+            margin-bottom: 25px;
+
+            animation:
+                fuego 1s
+                ease-in-out
+                infinite
+                alternate;
+
+        }
+
+
+        @keyframes fuego {
+
+            from {
+
+                transform:
+                    scale(1);
+
+            }
+
+            to {
+
+                transform:
+                    scale(1.1);
+
+            }
+
+        }
+
+
+        .frase h2 {
+
+            font-size: 42px;
+
+            color: #f4c542;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .frase p {
+
+            font-size: 22px;
+
+            font-style: italic;
+
+            color: #d7e2da;
+
+        }
+
+
+
+        /* =====================================================
+           PIE DE PÁGINA
+        ===================================================== */
+
+        footer {
+
+            background:
+                #030b06;
+
+            text-align: center;
+
+            padding:
+                50px 20px;
+
+            color:
+                #81958a;
+
+        }
+
+
+        footer h3 {
+
+            color:
+                #f4c542;
+
+            margin-bottom:
+                12px;
+
+        }
+
+
+        footer p {
+
+            margin:
+                5px;
+
+        }
+
+
+
+        /* =====================================================
+           DISEÑO PARA CELULAR
+        ===================================================== */
+
+        @media(max-width:700px) {
+
+            nav {
+
+                padding:
+                    0 15px;
+
+            }
+
+
+            nav ul {
+
+                display: none;
+
+            }
+
+
+            .logo-menu span {
+
+                display: none;
+
+            }
+
+
+            .logo-principal {
+
+                width: 190px;
+
+                height: 190px;
+
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    48px;
+
+            }
+
+
+            .hero p {
+
+                font-size:
+                    17px;
+
+            }
+
+
+            .oracion {
+
+                padding:
+                    30px 20px;
+
+            }
+
+
+            .oracion p {
+
+                font-size:
+                    17px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- =====================================================
+         FONDO
+    ===================================================== -->
+
+    <div class="estrellas"></div>
+
+
+
+    <!-- =====================================================
+         MENÚ SUPERIOR
+    ===================================================== -->
+
+    <nav>
+
+
+        <div class="logo-menu">
+
+
+            <!--
+            IMPORTANTE:
+
+            TU ARCHIVO SE LLAMA logoB.png
+
+            Por eso usamos exactamente:
+
+            src="logoB.png"
+            -->
+
+
+            <img
+
+                src="logoB.png"
+
+                alt="Logo Colegio Ecológico Scout"
+
+            >
+
+
+            <span>
+
+                Colegio Ecológico Scout
+
+            </span>
+
+
+        </div>
+
+
+
+        <ul>
+
+
+            <li>
+
+                <a href="#inicio">
+
+                    Inicio
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#oraciones">
+
+                    Oraciones
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#scouters">
+
+                    Scouters
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         PORTADA
+    ===================================================== -->
+
+    <header
+        class="hero"
+        id="inicio">
+
+
+        <!--
+        AQUÍ APARECE TU LOGO GRANDE
+
+        El archivo debe llamarse:
+
+        logoB.png
+        -->
+
+
+        <img
+
+            src="logoB.png"
+
+            alt="Logo Colegio Ecológico Scout"
+
+            class="logo-principal"
+
+        >
+
+
+        <h1>
+
+            Oraciones
+
+            <span>
+
+                Scout
+
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Un espacio para recordar nuestras palabras,
+            nuestros valores y el espíritu que nos une
+            como comunidad del Colegio Ecológico Scout.
+
+        </p>
+
+
+        <a
+
+            href="#oraciones"
+
+            class="boton"
+
+        >
+
+            🌲 Entrar a las oraciones
+
+        </a>
+
+
+    </header>
+
+
+
+    <!-- =====================================================
+         SECCIÓN DE GRUPOS
+    ===================================================== -->
+
+    <section id="oraciones">
+
+
+        <div class="titulo">
+
+
+            <h2>
+
+                🙏 Nuestra comunidad
+
+            </h2>
+
+
+            <p>
+
+                Selecciona tu grupo para conocer
+                y compartir su oración.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="grupos">
+
+
+            <!-- =================================================
+                 CACHORROS
+            ================================================== -->
+
+            <div class="tarjeta">
+
+
+                <div class="icono">
+
+                    🐺
+
+                </div>
+
+
+                <h3>
+
+                    Cachorros
+
+                </h3>
+
+
+                <p>
+
+                    Nuestros pequeños exploradores
+                    comienzan aquí su camino.
+
+                </p>
+
+
+                <button
+
+                    onclick=
+                    "mostrarOracion('oracionCachorros')"
+
+                >
+
+                    🙏 Ver oración
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MOWGLY
+            ================================================== -->
+
+            <div class="tarjeta">
+
+
+                <div class="icono">
+
+                    🌿
+
+                </div>
+
+
+                <h3>
+
+                    Mowgly
+
+                </h3>
+
+
+                <p>
+
+                    Aventura, naturaleza
+                    y aprendizaje.
+
+                </p>
+
+
+                <button
+
+                    onclick=
+                    "mostrarOracion('oracionMowgly')"
+
+                >
+
+                    🙏 Ver oración
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 GRIZZLY
+            ================================================== -->
+
+            <div class="tarjeta">
+
+
+                <div class="icono">
+
+                    🐻
+
+                </div>
+
+
+                <h3>
+
+                    Grizzly
+
+                </h3>
+
+
+                <p>
+
+                    Creciendo juntos
+                    en comunidad.
+
+                </p>
+
+
+                <button
+
+                    onclick=
+                    "mostrarOracion('oracionGrizzly')"
+
+                >
+
+                    🙏 Ver oración
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TROPA
+            ================================================== -->
+
+            <div class="tarjeta">
+
+
+                <div class="icono">
+
+                    🔥
+
+                </div>
+
+
+                <h3>
+
+                    Tropa
+
+                </h3>
+
+
+                <p>
+
+                    Aventura, liderazgo
+                    y servicio.
+
+                </p>
+
+
+                <button
+
+                    onclick=
+                    "mostrarOracion('oracionTropa')"
+
+                >
+
+                    🙏 Ver oración
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CAMINANTES
+            ================================================== -->
+
+            <div class="tarjeta">
+
+
+                <div class="icono">
+
+                    🧭
+
+                </div>
+
+
+                <h3>
+
+                    Caminantes
+
+                </h3>
+
+
+                <p>
+
+                    Jóvenes que construyen
+                    su propio camino.
+
+                </p>
+
+
+                <button
+
+                    onclick=
+                    "mostrarOracion('oracionCaminantes')"
+
+                >
+
+                    🙏 Ver oración
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ROBERTS
+            ================================================== -->
+
+            <div class="tarjeta">
+
+
+                <div class="icono">
+
+                    🏔️
+
+                </div>
+
+
+                <h3>
+
+                    Roberts
+
+                </h3>
+
+
+                <p>
+
+                    Compromiso, servicio
+                    y liderazgo.
+
+                </p>
+
+
+                <button
+
+                    onclick=
+                    "mostrarOracion('oracionRoberts')"
+
+                >
+
+                    🙏 Ver oración
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SCOUTERS
+            ================================================== -->
+
+            <div
+                class="tarjeta scouter">
+
+
+                <div class="icono">
+
+                    🧑‍✈️
+
+                </div>
+
+
+                <h3>
+
+                    Scouters
+
+                </h3>
+
+
+                <p>
+
+                    Quienes acompañan,
+                    orientan y sirven
+                    a nuestra comunidad.
+
+                </p>
+
+
+                <button
+
+                    onclick=
+                    "mostrarOracion('oracionScouters')"
+
+                >
+
+                    🙏 Ver oración
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ORACIÓN CACHORROS
+        ====================================================== -->
+
+        <div
+
+            id="oracionCachorros"
+
+            class="oracion"
+
+        >
+
+
+            <h3>
+
+                🐺 Oración de Cachorros
+
+            </h3>
+
+
+            <p>
+
+AQUÍ VA LA ORACIÓN OFICIAL
+DE CACHORROS.
+
+Cuando tengas la oración,
+reemplaza este texto.
+
+            </p>
+
+
+            <button
+
+                class="cerrar"
+
+                onclick=
+                "cerrarOraciones()"
+
+            >
+
+                Cerrar
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ORACIÓN MOWGLY
+        ====================================================== -->
+
+        <div
+
+            id="oracionMowgly"
+
+            class="oracion"
+
+        >
+
+
+            <h3>
+
+                🌿 Oración de Mowgly
+
+            </h3>
+
+
+            <p>
+
+AQUÍ VA LA ORACIÓN OFICIAL
+DE MOWGLY.
+
+Cuando tengas la oración,
+reemplaza este texto.
+
+            </p>
+
+
+            <button
+
+                class="cerrar"
+
+                onclick=
+                "cerrarOraciones()"
+
+            >
+
+                Cerrar
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ORACIÓN GRIZZLY
+        ====================================================== -->
+
+        <div
+
+            id="oracionGrizzly"
+
+            class="oracion"
+
+        >
+
+
+            <h3>
+
+                🐻 Oración de Grizzly
+
+            </h3>
+
+
+            <p>
+
+AQUÍ VA LA ORACIÓN OFICIAL
+DE GRIZZLY.
+
+Cuando tengas la oración,
+reemplaza este texto.
+
+            </p>
+
+
+            <button
+
+                class="cerrar"
+
+                onclick=
+                "cerrarOraciones()"
+
+            >
+
+                Cerrar
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ORACIÓN TROPA
+        ====================================================== -->
+
+        <div
+
+            id="oracionTropa"
+
+            class="oracion"
+
+        >
+
+
+            <h3>
+
+                🔥 Oración de Tropa
+
+            </h3>
+
+
+            <p>
+
+AQUÍ VA LA ORACIÓN OFICIAL
+DE TROPA.
+
+Cuando tengas la oración,
+reemplaza este texto.
+
+            </p>
+
+
+            <button
+
+                class="cerrar"
+
+                onclick=
+                "cerrarOraciones()"
+
+            >
+
+                Cerrar
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ORACIÓN CAMINANTES
+        ====================================================== -->
+
+        <div
+
+            id="oracionCaminantes"
+
+            class="oracion"
+
+        >
+
+
+            <h3>
+
+                🧭 Oración de Caminantes
+
+            </h3>
+
+
+            <p>
+
+AQUÍ VA LA ORACIÓN OFICIAL
+DE CAMINANTES.
+
+Cuando tengas la oración,
+reemplaza este texto.
+
+            </p>
+
+
+            <button
+
+                class="cerrar"
+
+                onclick=
+                "cerrarOraciones()"
+
+            >
+
+                Cerrar
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ORACIÓN ROBERTS
+        ====================================================== -->
+
+        <div
+
+            id="oracionRoberts"
+
+            class="oracion"
+
+        >
+
+
+            <h3>
+
+                🏔️ Oración de Roberts
+
+            </h3>
+
+
+            <p>
+
+AQUÍ VA LA ORACIÓN OFICIAL
+DE ROBERTS.
+
+Cuando tengas la oración,
+reemplaza este texto.
+
+            </p>
+
+
+            <button
+
+                class="cerrar"
+
+                onclick=
+                "cerrarOraciones()"
+
+            >
+
+                Cerrar
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ORACIÓN SCOUTERS
+        ====================================================== -->
+
+        <div
+
+            id="oracionScouters"
+
+            class="oracion"
+
+        >
+
+
+            <h3>
+
+                🧑‍✈️ Oración de los Scouters
+
+            </h3>
+
+
+            <p>
+
+AQUÍ VA LA ORACIÓN OFICIAL
+DE LOS SCOUTERS.
+
+Cuando tengas la oración,
+reemplaza este texto.
+
+            </p>
+
+
+            <button
+
+                class="cerrar"
+
+                onclick=
+                "cerrarOraciones()"
+
+            >
+
+                Cerrar
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FRASE FINAL
+    ===================================================== -->
+
+    <section class="frase">
+
+
+        <div class="fogata">
+
+            🔥
+
+        </div>
+
+
+        <h2>
+
+            Siempre listos
+
+        </h2>
+
+
+        <p>
+
+            "Dejemos este mundo
+            un poco mejor
+            de como lo encontramos."
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PIE DE PÁGINA
+    ===================================================== -->
+
+    <footer>
+
+
+        <h3>
+
+            🏕️ Colegio Ecológico Scout
+
+        </h3>
+
+
+        <p>
+
+            Comunidad Scout
+
+        </p>
+
+
+        <p>
+
+            Cachorros · Mowgly · Grizzly ·
+            Tropa · Caminantes · Roberts · Scouters
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            🌲 Siempre listos para servir
+
+        </p>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        function mostrarOracion(id) {
+
+
+            cerrarOraciones();
+
+
+            const oracion =
+                document.getElementById(id);
+
+
+            oracion.style.display =
+                "block";
+
+
+            oracion.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }
+
+
+
+        function cerrarOraciones() {
+
+
+            const oraciones =
+                document.querySelectorAll(
+                    ".oracion"
+                );
+
+
+            oraciones.forEach(
+
+                function(oracion) {
+
+                    oracion.style.display =
+                        "none";
+
+                }
+
+            );
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
